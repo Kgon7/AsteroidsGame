@@ -1,4 +1,5 @@
 Star[] nightSky = new Star [200];
+ArrayList <Asteroid> sam = new ArrayList <Asteroid>();
 Spaceship jake = new Spaceship();
 public void setup() 
 {
@@ -8,6 +9,10 @@ public void setup()
   {
   	nightSky[i] = new Star();
   }
+  for(int p = 0; p < 10; p++)
+  {
+    sam.add(new Asteroid());
+  }
 }
 public void draw() 
 {
@@ -16,6 +21,13 @@ public void draw()
   	{
   		nightSky[i].show();
   	}
+  for(int p = 0; p < sam.size(); p++)
+    {
+      sam.get(p).show();
+      sam.get(p).move();
+      if(dist(sam.get(p).getMyX(), sam.get(p).getMyY(), jake.getMyX(), jake.getMyY()) < 10)
+          sam.remove(p);
+    }
   jake.move();
   jake.show();
 }
