@@ -1,6 +1,7 @@
 Star[] nightSky = new Star [200];
 ArrayList <Asteroid> sam = new ArrayList <Asteroid>();
 Spaceship jake = new Spaceship();
+ArrayList <Bullet> ant = new ArrayList <Bullet>();
 public void setup() 
 {
   size(500,500);
@@ -27,12 +28,23 @@ public void draw()
       sam.get(p).move();
       if(dist(sam.get(p).getMyX(), sam.get(p).getMyY(), jake.getMyX(), jake.getMyY()) < 10)
           sam.remove(p);
+      for(int k = 0; k < ant.size(); k++)
+        if(dist(sam.get(p).getMyX(), sam.get(p).getMyY(), ant.get(k).getMyX(), ant.get(k).getMyY()) < 10){
+          sam.remove(p);
+          ant.remove(k);
+          break;
+        }
+    }
+  for(int k = 0; k < ant.size(); k++){
+      ant.get(k).show();
+      ant.get(k).move();
     }
   jake.move();
   jake.show();
+  
 }
 public void keyPressed(){
-	if(key == ' '){
+	if(key == 'q'){
 			jake.stop();
 			jake.hyperSpace();
 	}else if(key == 'w'){
@@ -42,5 +54,8 @@ public void keyPressed(){
 	}else if(key == 'd'){
 			jake.turn(30);
 		}
+   else if(key == ' '){
+      ant.add(new Bullet());
+   }
 	}
 
