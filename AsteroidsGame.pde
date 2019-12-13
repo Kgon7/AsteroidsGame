@@ -84,7 +84,8 @@ public void keyPressed(){
 			jake.turn(30);
 		}
    else if(key == ' '){
-      ant.add(new Bullet());
+      if(ant.size() < 7)
+        ant.add(new Bullet());
    }
 	}
 
