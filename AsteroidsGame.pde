@@ -64,7 +64,7 @@ public void draw()
   jake.move();
   jake.show();
   if(sam.size() == 0){
-    for(int p = 0; p < a+5; p++)
+    for(int p = 0; p < (a+level*5-5); p++)
     {
       sam.add(new Asteroid());
     }
@@ -84,7 +84,7 @@ public void keyPressed(){
 			jake.turn(30);
 		}
    else if(key == ' '){
-      if(ant.size() < 7)
+      if(ant.size() < 8)
         ant.add(new Bullet());
    }
 	}
